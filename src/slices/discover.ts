@@ -1,10 +1,12 @@
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+
 import { TMDB_V3_API_KEY } from "src/constant";
 import { tmdbApi } from "./apiSlice";
 import { MEDIA_TYPE, PaginatedMovieResult } from "src/types/Common";
 import { MovieDetail } from "src/types/Movie";
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 
 const initialState: Record<string, Record<string, PaginatedMovieResult>> = {};
+
 export const initialItemState: PaginatedMovieResult = {
   page: 0,
   results: [],

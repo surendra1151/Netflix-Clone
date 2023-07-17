@@ -1,8 +1,7 @@
 import { useEffect, useState, useMemo, useCallback, useRef } from "react";
+
 import { Box, Stack } from "@chakra-ui/react";
-
 import { MdVolumeUp, MdVolumeOff } from "react-icons/md";
-
 import Player from "video.js/dist/types/player";
 
 import { getRandomNumber } from "src/utils/common";
@@ -19,7 +18,7 @@ import {
   useLazyGetAppendedVideosQuery,
 } from "src/slices/discover";
 import { Movie } from "src/types/Movie";
-import VideoJSPlayer from "../../layout/watch/VideoJSPlayer";
+import VideoJSPlayer from "../WatchPage/VideoJSPlayer";
 
 interface TopTrailerProps {
   mediaType: MEDIA_TYPE;
@@ -181,7 +180,6 @@ export default function TopTrailer({ mediaType }: TopTrailerProps) {
                   <MaturityRate>{`${maturityRate}+`}</MaturityRate>
                 </Stack>
               </Box>
-
               <Box
                 sx={{
                   position: "absolute",

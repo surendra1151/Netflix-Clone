@@ -1,7 +1,7 @@
 import { Button, ButtonProps } from "@chakra-ui/react";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 
-export default function MoreInfoButton({ ...props }: ButtonProps) {
+const MoreInfoButton = ({ ...props }: ButtonProps) => {
   return (
     <Button
       variant="solid"
@@ -15,7 +15,7 @@ export default function MoreInfoButton({ ...props }: ButtonProps) {
       whiteSpace="nowrap"
       textTransform="capitalize"
       lineHeight={1.5}
-      opacity = "1"
+      opacity="1"
       justifyContent="center"
       borderRadius="4px"
       color="white"
@@ -23,10 +23,12 @@ export default function MoreInfoButton({ ...props }: ButtonProps) {
         bgcolor: "#6d6d6e",
         opacity: 0.7,
       }}
-      ml = "16px"
+      ml="16px"
       {...props}
     >
       More Info
     </Button>
   );
-}
+};
+
+export default MoreInfoButton;

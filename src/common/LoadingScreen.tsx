@@ -12,7 +12,7 @@ const LoadingScreen = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "fixed",
-        backgroundColor: "#141414",
+        backgroundColor: "main",
         opacity: 0.75,
         zIndex: 2,
       }}

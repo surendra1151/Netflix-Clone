@@ -35,7 +35,7 @@ const MainHeader = () => {
       top="0"
       w="full"
       zIndex="docked"
-      bg= {isOffset ? "#141414" : "transparent"}
+      bg={isOffset ? "#141414" : "transparent"}
       boxShadow={isOffset ? "md" : "none"}
       px="60px"
       h={APP_BAR_HEIGHT}
@@ -51,7 +51,7 @@ const MainHeader = () => {
           {isWideVersion ? (
             <Stack direction="row" align="center" spacing="4">
               {pages.map((page) => (
-                <NetflixNavigationLink href="/" key={page}>
+                <NetflixNavigationLink to="/" key={page}>
                   {page}
                 </NetflixNavigationLink>
               ))}
@@ -111,4 +111,5 @@ const MainHeader = () => {
     </Box>
   );
 };
+
 export default MainHeader;

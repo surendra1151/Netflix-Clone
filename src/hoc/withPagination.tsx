@@ -1,4 +1,5 @@
 import { ElementType, useCallback, useEffect } from "react";
+
 import LoadingScreen from "src/common/LoadingScreen";
 import { useAppDispatch, useAppSelector } from "src/hooks/redux";
 import {
@@ -9,11 +10,11 @@ import {
 import { MEDIA_TYPE } from "src/types/Common";
 import { CustomGenre, Genre } from "src/types/Genre";
 
-export default function withPagination(
+const withPagination = (
   Component: ElementType,
   mediaType: MEDIA_TYPE,
   genre: Genre | CustomGenre
-) {
+) => {
   return function WithPagination() {
     const dispatch = useAppDispatch();
     const itemKey = genre.id ?? (genre as CustomGenre).apiString;
@@ -50,7 +51,6 @@ export default function withPagination(
           page,
         });
       }
-      // dispatch(setNextPage({ mediaType, itemKey }));
     }, []);
 
     if (pageState) {
@@ -60,4 +60,6 @@ export default function withPagination(
     }
     return <LoadingScreen />;
   };
-}
+};
+
+export default withPagination;

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+
 import { motion } from "framer-motion";
 import { Portal } from "@chakra-ui/react";
 
@@ -11,7 +12,7 @@ import {
 } from "../animate/variants/zoom/ZoomIn";
 import { usePortalData } from "src/providers/PortalProvider";
 
-export default function VideoPortalContainer() {
+const VideoPortalContainer = () => {
   const { miniModalMediaData, anchorElement } = usePortalData();
   const container = useRef(null);
   const rect = anchorElement?.getBoundingClientRect();
@@ -71,4 +72,6 @@ export default function VideoPortalContainer() {
       </MotionContainer>
     </>
   );
-}
+};
+
+export default VideoPortalContainer;

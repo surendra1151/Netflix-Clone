@@ -18,6 +18,6 @@ const useOffSetTop = (top: number) => {
   }, [top]);
 
   return offsetTop;
-}
+};
 
 export default useOffSetTop;

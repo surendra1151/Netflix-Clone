@@ -1,10 +1,8 @@
-import React from 'react';
+import React from "react";
 import { CustomGenre } from "src/types/Genre";
 
 export const API_ENDPOINT_URL = "https://api.themoviedb.org/3";
-export const TMDB_V3_API_KEY = "0e13cc0c0713f209b0f16c07e748e984"
-
-console.log("TMDB_V3_API_KEY", TMDB_V3_API_KEY)
+export const TMDB_V3_API_KEY = "0e13cc0c0713f209b0f16c07e748e984";
 
 export const MAIN_PATH = {
   root: "",

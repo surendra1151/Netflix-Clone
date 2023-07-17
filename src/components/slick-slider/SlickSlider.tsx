@@ -1,8 +1,10 @@
 import { useState, useRef } from "react";
+
 import styled from "styled-components";
-import { Box, Stack, useTheme, useMediaQuery } from "@chakra-ui/react";
+import { Box, Stack, useTheme } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Slider, { Settings } from "react-slick";
+
 import NetflixNavigationLink from "../../common/NetflixNavigationLink";
 import MotionContainer from "../../animate/MotionContainer";
 import { varFadeIn } from "../../animate/variants/fade/FadeIn";
@@ -12,9 +14,8 @@ import { PaginatedMovieResult } from "../../types/Common";
 import VideoItemWithHover from "../VideoItemWithHover";
 import CustomNavigation from "./CustomNavigation";
 import { ARROW_MAX_WIDTH } from "src/constant";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 
 const RootStyle = styled("div")(() => ({
   position: "relative",
@@ -23,7 +24,16 @@ const RootStyle = styled("div")(() => ({
 
 interface StyledSliderProps {
   theme: any;
-  padding: number; // Adjust the type based on your actual type
+  padding: number;
+}
+
+interface SlideItemProps {
+  item: Movie;
+}
+
+interface SlickSliderProps {
+  data: PaginatedMovieResult;
+  genre: Genre | CustomGenre;
 }
 
 const StyledSlider = styled(Slider)<StyledSliderProps>`
@@ -55,21 +65,12 @@ const StyledSlider = styled(Slider)<StyledSliderProps>`
   `}
 `;
 
-interface SlideItemProps {
-  item: Movie;
-}
-
 function SlideItem({ item }: SlideItemProps) {
   return (
     <Box pr={{ xs: 0.5, sm: 1 }}>
       <VideoItemWithHover video={item} />
     </Box>
   );
-}
-
-interface SlickSliderProps {
-  data: PaginatedMovieResult;
-  genre: Genre | CustomGenre;
 }
 
 function SlickSlider({ data, genre }: SlickSliderProps) {
@@ -145,18 +146,19 @@ function SlickSlider({ data, genre }: SlickSliderProps) {
             direction="row"
             alignItems="center"
             mb={2}
-            pl={{ xs: "30px", sm: "60px" }}
+            pl={["30px", "60px"]}
           >
             <NetflixNavigationLink
-              variant="h5"
-              href={`/genre/${
+              to={`/genre/${
                 genre.id || genre.name.toLowerCase().replace(" ", "_")
               }`}
               display="inline-block"
               fontWeight={700}
+              fontSize="1.5rem"
               onMouseOver={() => {
                 setShowExplore(true);
               }}
+              fontFamily="Roboto, Helvetica, Arial, sans-serif"
               onMouseLeave={() => {
                 setShowExplore(false);
               }}
@@ -166,7 +168,7 @@ function SlickSlider({ data, genre }: SlickSliderProps) {
                 open={showExplore}
                 initial="initial"
                 display="inline"
-                color="success.main"
+                color="green.500"
               >
                 {"Explore All".split("").map((letter, index) => (
                   <motion.span key={index} variants={varFadeIn}>

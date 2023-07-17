@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+
 import Player from "video.js/dist/types/player";
 import videojs from "video.js";
 import "videojs-youtube";
@@ -16,12 +17,8 @@ export default function VideoJSPlayer({
 
   useEffect(() => {
     (async function handleVideojs() {
-      // Make sure Video.js player is only initialized once
       if (!playerRef.current) {
-        // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode.
         const videoElement = document.createElement("video-js");
-        // videoElement.classList.add("vjs-big-play-centered", "vjs-16-9");
-
         videoRef.current?.appendChild(videoElement);
         const player = (playerRef.current = videojs(
           videoElement,
@@ -30,19 +27,14 @@ export default function VideoJSPlayer({
             onReady && onReady(player);
           }
         ));
-
-        // You could update an existing player in the `else` block here
-        // on prop change, for example:
       } else {
         const player = playerRef.current;
-        // player.autoplay(options.autoplay);
         player.width(options.width);
         player.height(options.height);
       }
     })();
   }, [options, videoRef]);
 
-  // Dispose the Video.js player when the functional component unmounts
   useEffect(() => {
     const player = playerRef.current;
 

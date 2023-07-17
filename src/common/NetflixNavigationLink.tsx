@@ -6,14 +6,14 @@ import {
 import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 
 const NetflixNavigationLink = ({
-  href,
+  to,
   children,
   ...props
-}: LinkProps) => {
+}: LinkProps & RouterLinkProps) => {
   return (
     <ChakraLink
       as={RouterLink}
-      href={href}
+      to={to}
       color="#fff"
       textDecoration="none"
       _hover={{

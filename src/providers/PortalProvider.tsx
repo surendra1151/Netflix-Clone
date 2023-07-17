@@ -5,6 +5,7 @@ import createSafeContext from "./CreateSafeContext";
 export interface PortalConsumerProps {
   setPortal: (anchor: HTMLElement | null, vidoe: Movie | null) => void;
 }
+
 export interface PortalDataConsumerProps {
   anchorElement: HTMLElement | null;
   miniModalMediaData: Movie | null;

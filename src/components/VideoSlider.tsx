@@ -7,6 +7,7 @@ interface SliderRowForGenreProps {
   genre: Genre | CustomGenre;
   mediaType: MEDIA_TYPE;
 }
+
 export default function SliderRowForGenre({
   genre,
   mediaType,

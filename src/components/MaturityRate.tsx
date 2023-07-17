@@ -1,7 +1,8 @@
-import { Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
-export default function MaturityRate({ children }: { children: ReactNode }) {
+import { Box } from "@chakra-ui/react";
+
+const MaturityRate = ({ children }: { children: ReactNode }) => {
   return (
     <Box
       py="1"
@@ -18,4 +19,6 @@ export default function MaturityRate({ children }: { children: ReactNode }) {
       {children}
     </Box>
   );
-}
+};
+
+export default MaturityRate;

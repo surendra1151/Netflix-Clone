@@ -11,6 +11,7 @@ interface DetailType {
   id?: number;
   mediaType?: MEDIA_TYPE;
 }
+
 export interface DetailModalConsumerProps {
   detail: { mediaDetail?: MovieDetail } & DetailType;
   setDetailType: (newDetailType: DetailType) => void;

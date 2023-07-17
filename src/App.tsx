@@ -21,10 +21,14 @@ function App() {
       800: "#212B36",
       900: "#161C24",
     },
+    Text: {
+      fontFamily: "Roboto, Helvetica, Arial, sans-serif"
+    }
   });
+
   return (
     <ChakraProvider theme={customTheme}>
-     <Routers/>
+      <Routers />
     </ChakraProvider>
   );
 }

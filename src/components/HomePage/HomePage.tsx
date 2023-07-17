@@ -14,6 +14,7 @@ export async function loader() {
   );
   return null;
 }
+
 export default function Component() {
   const { data: genres, isSuccess } = useGetGenresQuery(MEDIA_TYPE.Movie);
 

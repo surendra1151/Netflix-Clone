@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import { tmdbApi } from "../slices/apiSlice";
 import discoverReducer from "../slices/discover";
 

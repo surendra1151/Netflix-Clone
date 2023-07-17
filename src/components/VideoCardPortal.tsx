@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
+
 import { Box, Stack, Text, Image, Card } from "@chakra-ui/react";
 import { AddIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import {
-  MdVolumeOff,
-  MdVolumeUp,
-  MdThumbUpOffAlt,
-  MdPlayCircle,
-} from "react-icons/md";
+import { MdVolumeUp, MdThumbUpOffAlt, MdPlayCircle } from "react-icons/md";
+
 import { usePortal } from "src/providers/PortalProvider";
 import { useDetailModal } from "src/providers/DetailModalProviders";
 import { formatMinuteToReadable, getRandomNumber } from "src/utils/common";
 import NetflixIconButton from "./NetflixIconButton";
-import MaxLineTypography from "./MaxLineTypography";
 import AgeLimitChip from "./AgeLimitChip";
 import QualityChip from "./QualityChip";
 import GenreBreadcrumbs from "./GenreBreadcrumbs";
@@ -26,16 +22,9 @@ interface VideoCardModalProps {
   anchorElement: HTMLElement;
 }
 
-export default function VideoCardModal({
-  video,
-  anchorElement,
-}: VideoCardModalProps) {
+const VideoCardModal = ({ video, anchorElement }: VideoCardModalProps) => {
   const navigate = useNavigate();
-
-  console.log("hello")
-
   const { data: configuration } = useGetConfigurationQuery(undefined);
-  console.log("configuration", configuration)
   const { data: genres } = useGetGenresQuery(MEDIA_TYPE.Movie);
   const setPortal = usePortal();
   const rect = anchorElement.getBoundingClientRect();
@@ -48,6 +37,7 @@ export default function VideoCardModal({
       }}
       w={rect.width * 1.5}
       h="100%"
+      backgroundColor="main"
     >
       <Box w="100%" pos="relative" pb="calc(9 / 16 * 100%)">
         <Image
@@ -69,13 +59,25 @@ export default function VideoCardModal({
           px={4}
           pb={2}
         >
-          <MaxLineTypography maxLine={2} w="80%" fontWeight={700} fontSize="xl">
+          <Text
+            noOfLines={2}
+            w="80%"
+            fontWeight={700}
+            fontSize="xl"
+            color="white"
+          >
             {video.title}
-          </MaxLineTypography>
+          </Text>
           <Box flex={1} />
-          <NetflixIconButton aria-label="volumeup-icon">
-            <MdVolumeUp />
-          </NetflixIconButton>
+          <NetflixIconButton
+            size="md"
+            zIndex={2}
+            aria-label="volumeup-icon"
+            icon={<MdVolumeUp />}
+            background="transparent"
+            border="2px solid #454f5b"
+            borderRadius="50%"
+          />
         </Stack>
       </Box>
       <Box p={4}>
@@ -85,30 +87,52 @@ export default function VideoCardModal({
               p={0}
               onClick={() => navigate(`/${MAIN_PATH.watch}`)}
               aria-label="play-circle-icon"
-            >
-              <MdPlayCircle width={10} height={10} />
-            </NetflixIconButton>
-            <NetflixIconButton aria-label="add-icon">
-              <AddIcon />
-            </NetflixIconButton>
-            <NetflixIconButton aria-label="thumbs=up">
-              <MdThumbUpOffAlt />
-            </NetflixIconButton>
+              size="md"
+              zIndex={2}
+              icon={<Box as={MdPlayCircle} width="40px" height="40px" />}
+              background="transparent"
+              border="2px solid #454f5b"
+              borderRadius="50%"
+            />
+            <NetflixIconButton
+              size="md"
+              zIndex={2}
+              aria-label="add-icon"
+              icon={<AddIcon />}
+              background="transparent"
+              border="2px solid #454f5b"
+              borderRadius="50%"
+            />
+            <NetflixIconButton
+              size="md"
+              zIndex={2}
+              aria-label="thumbs-up"
+              icon={<MdThumbUpOffAlt />}
+              background="transparent"
+              border="2px solid #454f5b"
+              borderRadius="50%"
+            />
             <Box flex={1} />
             <NetflixIconButton
+              size="md"
+              zIndex={2}
+              aria-label="chevron-down"
+              icon={<ChevronDownIcon />}
+              background="transparent"
+              border="2px solid #454f5b"
+              borderRadius="50%"
               onClick={() => {
                 setDetailType({ mediaType: MEDIA_TYPE.Movie, id: video.id });
               }}
-              aria-label="chevron-down"
-            >
-              <ChevronDownIcon />
-            </NetflixIconButton>
+            />
           </Stack>
-          <Stack direction="row" spacing={1} alignItems="center">
+          <Stack direction="row" spacing={1} alignItems="center" mt="5px">
             <Text color="green.500">{`${getRandomNumber(100)}% Match`}</Text>
-            <AgeLimitChip label={`${getRandomNumber(20)}+`} />
-            <Text>{`${formatMinuteToReadable(getRandomNumber(180))}`}</Text>
-            <QualityChip label="HD" />
+            <AgeLimitChip label={`${getRandomNumber(20)}+`} ml="8px" />
+            <Text color="white" ml="8px">{`${formatMinuteToReadable(
+              getRandomNumber(180)
+            )}`}</Text>
+            <QualityChip label="HD" ml="8px" />
           </Stack>
           {genres && (
             <GenreBreadcrumbs
@@ -121,4 +145,6 @@ export default function VideoCardModal({
       </Box>
     </Card>
   );
-}
+};
+
+export default VideoCardModal;

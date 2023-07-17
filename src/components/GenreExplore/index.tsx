@@ -1,1 +1,1 @@
-export {default} from "./GenreExplore";
+export { default } from "./GenreExplore";

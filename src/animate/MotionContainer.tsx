@@ -1,5 +1,6 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+
 import { varWrapBoth } from "./variants/Wrap";
 
 interface MotionContainerProps extends BoxProps {
@@ -7,11 +8,11 @@ interface MotionContainerProps extends BoxProps {
   open?: boolean;
 }
 
-export default function MotionContainer({
+const MotionContainer = ({
   open,
   children,
   ...other
-}: MotionContainerProps) {
+}: MotionContainerProps) => {
   return (
     <Box
       initial={false}
@@ -23,4 +24,6 @@ export default function MotionContainer({
       {children}
     </Box>
   );
-}
+};
+
+export default MotionContainer;

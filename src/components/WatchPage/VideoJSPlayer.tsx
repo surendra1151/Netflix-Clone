@@ -19,7 +19,6 @@ export default function VideoJSPlayer({
     (async function handleVideojs() {
       if (!playerRef.current) {
         const videoElement = document.createElement("video-js");
-        videoElement.classList.add('video-js');
         videoRef.current?.appendChild(videoElement);
         const player = (playerRef.current = videojs(
           videoElement,
@@ -30,8 +29,22 @@ export default function VideoJSPlayer({
         ));
       } else {
         const player = playerRef.current;
-        player.width(options.width);
-        player.height(options.height);
+            // Check if the player is playing
+            if (!player.paused()) {
+                // Pause the player
+                await player.pause();
+
+                // Then change width and height
+                player.width(options.width);
+                player.height(options.height);
+                
+                // Then play it again if needed
+                player.play();
+            } else {
+                // If it's not playing, just change width and height
+                player.width(options.width);
+                player.height(options.height);
+            }
       }
     })();
   }, [options, videoRef]);

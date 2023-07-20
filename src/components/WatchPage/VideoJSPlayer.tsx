@@ -19,6 +19,7 @@ export default function VideoJSPlayer({
     (async function handleVideojs() {
       if (!playerRef.current) {
         const videoElement = document.createElement("video-js");
+        videoElement.classList.add('video-js');
         videoRef.current?.appendChild(videoElement);
         const player = (playerRef.current = videojs(
           videoElement,

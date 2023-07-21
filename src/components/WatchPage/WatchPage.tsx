@@ -95,8 +95,8 @@ const WatchPage = () => {
   if (!!videoJsOptions.width) {
     return (
       <Box position="relative">
-        {/* <VideoJSPlayer options={videoJsOptions} onReady={handlePlayerReady} /> */}
-        {/* {playerRef.current && playerInitialized && ( */}
+        <VideoJSPlayer options={videoJsOptions} onReady={handlePlayerReady} />
+        {playerRef.current && playerInitialized && (
           <Box
             position="absolute"
             top="0"
@@ -251,7 +251,7 @@ const WatchPage = () => {
               {/* end Controller */}
             </Box>
           </Box>
-        {/* )} */}
+        )}
       </Box>
     );
   }

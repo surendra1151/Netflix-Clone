@@ -38,9 +38,9 @@ const WatchPage = () => {
       height: windowSize.height,
       sources: [
         {
-          src: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
-          type: "video/mp4"
-      }
+          src: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+          type: "video/mp4",
+        },
       ],
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
